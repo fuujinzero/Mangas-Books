@@ -8,6 +8,7 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.SearchView;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ProgressBar;
 
 import com.e.skirmantas.mangabook.R;
 import com.e.skirmantas.mangabook.adapters.BookAdapter;
@@ -29,12 +30,13 @@ public class BookListActivity extends AppCompatActivity {
     private BookAdapter bookAdapter;
     private BookClient client;
     private ArrayList<Book> abooks;
+    private ProgressBar progress;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_book_list);
-
+        progress = (ProgressBar) findViewById(R.id.progress);
         rvBooks = findViewById(R.id.rvBooks);
         abooks = new ArrayList<>();
 
@@ -54,11 +56,14 @@ public class BookListActivity extends AppCompatActivity {
     // Executes an API call to the OpenLibrary search endpoint, parses the results
     // Converts them into an array of book objects and adds them to the adapter
     private void fetchBooks(String query) {
+        // Show progress bar before making network request
+        progress.setVisibility(ProgressBar.VISIBLE);
         client = new BookClient();
         client.getBooks(query, new JsonHttpResponseHandler() {
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
                 try {
+                    progress.setVisibility(ProgressBar.GONE);
                     JSONArray docs;
                     if(response != null) {
                         // Get the docs json array
@@ -82,6 +87,7 @@ public class BookListActivity extends AppCompatActivity {
             @Override
             public void onFailure(int statusCode, Header[] headers, String responseString, Throwable throwable) {
                 super.onFailure(statusCode, headers, responseString, throwable);
+                progress.setVisibility(ProgressBar.GONE);
             }
         });
     }
