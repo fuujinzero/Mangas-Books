@@ -10,18 +10,18 @@ import android.widget.TextView;
 import com.e.skirmantas.mangabook.R;
 
 public class BookDetailActivity extends AppCompatActivity {
-    private ImageView ivBookCover;
-    private TextView tvTitle;
-    private TextView tvAuthor;
+    private ImageView BookCover;
+    private TextView Title;
+    private TextView Author;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_book_detail);
         // Fetch views
-        ivBookCover = (ImageView) findViewById(R.id.ivBookCover);
-        tvTitle = (TextView) findViewById(R.id.tvTitle);
-        tvAuthor = (TextView) findViewById(R.id.tvAuthor);
+        BookCover = (ImageView) findViewById(R.id.BookCover);
+        Title = (TextView) findViewById(R.id.Title);
+        Author = (TextView) findViewById(R.id.Author);
 
         // Extract book object from intent extras
 
@@ -38,9 +38,7 @@ public class BookDetailActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
+
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
@@ -50,4 +48,5 @@ public class BookDetailActivity extends AppCompatActivity {
 
         return super.onOptionsItemSelected(item);
     }
+
 }

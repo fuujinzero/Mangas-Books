@@ -23,17 +23,17 @@ public class BookAdapter extends RecyclerView.Adapter<BookAdapter.ViewHolder> {
     // View lookup cache
     public class ViewHolder extends RecyclerView.ViewHolder {
         public ImageView ivCover;
-        public TextView tvTitle;
-        public TextView tvAuthor;
+        public TextView Title;
+        public TextView Author;
 
         public ViewHolder(View itemView) {
             // Stores the itemView in a public final member variable that can be used
             // to access the context from any ViewHolder instance.
             super(itemView);
 
-            ivCover = (ImageView)itemView.findViewById(R.id.ivBookCover);
-            tvTitle = (TextView)itemView.findViewById(R.id.tvTitle);
-            tvAuthor = (TextView)itemView.findViewById(R.id.tvAuthor);
+            ivCover = (ImageView)itemView.findViewById(R.id.BookCover);
+            Title = (TextView)itemView.findViewById(R.id.Title);
+            Author = (TextView)itemView.findViewById(R.id.Author);
         }
     }
 
@@ -64,8 +64,8 @@ public class BookAdapter extends RecyclerView.Adapter<BookAdapter.ViewHolder> {
         Book book = mBooks.get(position);
 
         // Populate data into the template view using the data object
-        viewHolder.tvTitle.setText(book.getTitle());
-        viewHolder.tvAuthor.setText(book.getAuthor());
+        viewHolder.Title.setText(book.getTitle());
+        viewHolder.Author.setText(book.getAuthor());
         GlideApp.with(getContext())
                 .load(Uri.parse(book.getCoverUrl()))
                 .placeholder(R.drawable.ic_nocover)

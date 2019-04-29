@@ -26,7 +26,7 @@ import cz.msebera.android.httpclient.Header;
 
 
 public class BookListActivity extends AppCompatActivity {
-    private RecyclerView rvBooks;
+    private RecyclerView mangaBooks;
     private BookAdapter bookAdapter;
     private BookClient client;
     private ArrayList<Book> abooks;
@@ -37,17 +37,17 @@ public class BookListActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_book_list);
         progress = (ProgressBar) findViewById(R.id.progress);
-        rvBooks = findViewById(R.id.rvBooks);
+        mangaBooks = findViewById(R.id.mangaBooks);
         abooks = new ArrayList<>();
 
         // initialize the adapter
         bookAdapter = new BookAdapter(this, abooks);
 
         // attach the adapter to the RecyclerView
-        rvBooks.setAdapter(bookAdapter);
+        mangaBooks.setAdapter(bookAdapter);
 
         // Set layout manager to position the items
-        rvBooks.setLayoutManager(new LinearLayoutManager(this));
+        mangaBooks.setLayoutManager(new LinearLayoutManager(this));
 
         // Fetch the data remotely
         fetchBooks("Oscar Wilde");
@@ -119,8 +119,6 @@ public class BookListActivity extends AppCompatActivity {
         });
         return true;
     }
-
-
 
             @Override
     public boolean onOptionsItemSelected(MenuItem item) {

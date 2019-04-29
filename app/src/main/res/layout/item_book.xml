@@ -2,30 +2,31 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="#b4e3f7">
 
     <ImageView
-        android:id="@+id/ivBookCover"
+        android:id="@+id/BookCover"
         android:layout_width="56dp"
         android:layout_height="56dp"
         android:layout_margin="8dp" />
 
     <TextView
-        android:id="@+id/tvTitle"
+        android:id="@+id/Title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="8dp"
-        android:layout_toRightOf="@+id/ivBookCover"
+        android:layout_toRightOf="@+id/BookCover"
         android:text="Title"
         android:textSize="24sp" />
 
     <TextView
-        android:id="@+id/tvAuthor"
+        android:id="@+id/Author"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/tvTitle"
+        android:layout_below="@+id/Title"
         android:layout_marginLeft="8dp"
-        android:layout_toRightOf="@+id/ivBookCover"
+        android:layout_toRightOf="@+id/BookCover"
         android:text="Author"
         android:textSize="12sp" />
 </RelativeLayout>
